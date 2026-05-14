@@ -580,6 +580,7 @@ function getPerfColor(perf) {
 }
 
 function calculatePerformance() {
+    if (!contest_type || contest_type !== 'ICPC') return;
     const table = document.querySelector('table');
     if (!table) return;
 
@@ -617,7 +618,7 @@ function calculatePerformance() {
             }
         }
 
-        if (solved) {
+        if (solved && row[2][2] != 1 && row[2][2] != 2) { // 跳过 vp 队伍和未正式参赛队伍
             teamsWithSolvesCount++;
             validUserIds.push(userId);
         }
